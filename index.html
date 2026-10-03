@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f5ed">
+  <meta name="description" content="Valentino is a software engineer who cares about the people on the other side of the screen.">
+  <title>Valentino Ndalila | Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f4f5ed;
+      --ink: #20251f;
+      --muted: #676d62;
+      --line: #d9ddd2;
+      --green: #bfdc73;
+      --orange: #f17958;
+      --blue: #bbd6ed;
+      --serif: "Instrument Serif", Georgia, serif;
+      --sans: "DM Sans", sans-serif;
+      --page-width: 1200px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 5px; }
+    .wrap { width: min(var(--page-width), calc(100% - 64px)); margin-inline: auto; }
+    .eyebrow {
+      margin: 0;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .topbar {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      min-height: 82px;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .mark {
+      display: grid;
+      width: 34px;
+      aspect-ratio: 1;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--green);
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 400;
+    }
+    .nav { display: flex; align-items: center; gap: 32px; }
+    .nav a {
+      font-size: 12px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity 160ms ease;
+    }
+    .nav a:hover { opacity: .6; }
+    .nav .nav-contact {
+      padding: 10px 15px;
+      border: 1px solid var(--ink);
+      border-radius: 2px;
+    }
+    .menu-toggle { display: none; }
+
+    .hero {
+      display: grid;
+      min-height: min(710px, calc(100svh - 82px));
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: clamp(42px, 8vw, 112px);
+      padding-block: 72px 84px;
+    }
+    .hero-copy { position: relative; z-index: 1; padding-block: 28px; }
+    .hero-copy .eyebrow { display: flex; align-items: center; gap: 9px; }
+    .status-dot {
+      width: 7px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: #5e923e;
+      box-shadow: 0 0 0 3px #5e923e20;
+    }
+    h1 {
+      margin: 21px 0 12px;
+      font-family: var(--serif);
+      font-size: clamp(78px, 11.5vw, 144px);
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: .88;
+    }
+    .hero-role {
+      max-width: 550px;
+      margin: 0;
+      font-size: clamp(20px, 2.5vw, 30px);
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: 1.32;
+    }
+    .hero-role em { font-family: var(--serif); font-weight: 400; }
+    .hero-text { max-width: 420px; margin: 20px 0 0; color: var(--muted); font-size: 14px; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; margin-top: 30px; }
+    .button-link {
+      display: inline-flex;
+      min-height: 47px;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      padding: 0 17px;
+      background: var(--ink);
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 160ms ease, transform 160ms ease;
+    }
+    .button-link:hover { transform: translateY(-2px); background: #41473d; }
+    .text-link { font-size: 12px; font-weight: 600; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    .hero-visual {
+      position: relative;
+      min-height: 425px;
+      height: min(46vw, 530px);
+      background: #d7e1ce;
+    }
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .photo-label {
+      position: absolute;
+      right: -18px;
+      bottom: 24px;
+      display: flex;
+      width: 134px;
+      aspect-ratio: 1;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--green);
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height: 1.05;
+      text-align: center;
+      transform: rotate(8deg);
+    }
+    .photo-note {
+      position: absolute;
+      bottom: -28px;
+      left: 0;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .ticker { overflow: hidden; border-block: 1px solid var(--line); }
+    .ticker-inner {
+      display: flex;
+      width: max-content;
+      align-items: center;
+      gap: 27px;
+      padding: 14px 0;
+      animation: drift 35s linear infinite;
+    }
+    .ticker span { color: var(--muted); font-size: 10px; font-weight: 600; text-transform: uppercase; }
+    .ticker .ticker-star { color: #63823d; font-size: 15px; }
+    @keyframes drift { to { transform: translateX(-50%); } }
+
+    .section { padding-block: 125px; border-bottom: 1px solid var(--line); }
+    .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 48px; }
+    .section-title {
+      max-width: 700px;
+      margin: 8px 0 0;
+      font-family: var(--serif);
+      font-size: clamp(48px, 7vw, 80px);
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: .98;
+    }
+    .section-intro { max-width: 275px; margin: 0 0 5px; color: var(--muted); font-size: 12px; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 26px; row-gap: 58px; }
+    .project:nth-child(2) { margin-top: 88px; }
+    .project:nth-child(3) { grid-column: 1 / 2; margin-top: -88px; }
+    .project-art {
+      position: relative;
+      display: grid;
+      overflow: hidden;
+      min-height: 320px;
+      aspect-ratio: 1.28;
+      place-items: center;
+      isolation: isolate;
+      background: #cad7bd;
+    }
+    .project-art::before {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background-image: var(--project-image);
+      background-position: center;
+      background-size: cover;
+      content: "";
+      transition: transform 450ms cubic-bezier(.2,.8,.2,1);
+    }
+    .project:hover .project-art::before { transform: scale(1.045); }
+    .project-art::after { position: absolute; z-index: -1; inset: 0; background: var(--wash); content: ""; }
+    .art-table { --wash: #1930183d; --project-image: url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1100&q=85"); }
+    .art-soil { --wash: #253a1426; --project-image: url("https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1100&q=85"); }
+    .art-radio { --wash: #15243d45; --project-image: url("https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1100&q=85"); }
+    .mini-window {
+      width: min(77%, 360px);
+      overflow: hidden;
+      border: 1px solid #ffffff8c;
+      border-radius: 3px;
+      background: #f9f8f0;
+      box-shadow: 0 15px 48px #1321153d;
+      transform: rotate(-2deg);
+    }
+    .art-soil .mini-window { width: min(70%, 330px); transform: rotate(2deg); }
+    .art-radio .mini-window { width: min(78%, 360px); transform: rotate(-1deg); }
+    .window-top { display: flex; height: 24px; align-items: center; gap: 4px; padding-inline: 10px; border-bottom: 1px solid #e8e7de; }
+    .window-top i { width: 5px; aspect-ratio: 1; border-radius: 50%; background: #d5d8ce; }
+    .mini-content { padding: 20px 22px 22px; }
+    .mini-kicker { display: block; color: #767a70; font-size: 8px; font-weight: 700; text-transform: uppercase; }
+    .mini-title { display: block; margin-top: 7px; color: #272c23; font-family: var(--serif); font-size: clamp(24px, 3vw, 38px); line-height: 1; }
+    .mini-line { display: block; width: 66%; height: 5px; margin-top: 13px; border-radius: 5px; background: #e2e4da; }
+    .mini-line.short { width: 42%; margin-top: 6px; }
+    .mini-action { display: inline-block; margin-top: 16px; padding: 6px 10px; background: #c5dc8f; color: #27321d; font-size: 8px; font-weight: 700; }
+    .art-soil .mini-action { background: #e2ae74; }
+    .art-radio .mini-content { background: #f0e9db; }
+    .art-radio .mini-action { background: #9dc6dc; }
+    .project-info { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; padding-top: 17px; }
+    .project-name { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.3; }
+    .project-desc { max-width: 390px; margin: 5px 0 0; color: var(--muted); font-size: 12px; }
+    .project-number { padding-top: 3px; color: var(--muted); font-size: 10px; }
+
+    .about { display: grid; grid-template-columns: .7fr 1.3fr; gap: 10%; padding-block: 132px; border-bottom: 1px solid var(--line); }
+    .about-label { padding-top: 12px; }
+    .about-copy h2 { max-width: 750px; margin: 0; font-family: var(--serif); font-size: clamp(45px, 6.2vw, 72px); font-weight: 400; line-height: 1.02; }
+    .about-copy h2 em { color: #617c40; font-weight: 400; }
+    .about-copy > p { max-width: 580px; margin: 23px 0 0; color: var(--muted); font-size: 14px; }
+    .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); }
+    .value strong { display: block; font-size: 12px; font-weight: 600; }
+    .value span { display: block; margin-top: 5px; color: var(--muted); font-size: 11px; }
+
+    .contact {
+      position: relative;
+      overflow: hidden;
+      margin-block: 92px;
+      padding: clamp(34px, 7vw, 80px);
+      background: var(--green);
+    }
+    .contact::after {
+      position: absolute;
+      top: -125px;
+      right: 11%;
+      width: 270px;
+      aspect-ratio: 1;
+      border: 1px solid #20251f26;
+      border-radius: 50%;
+      box-shadow: 0 0 0 25px #20251f09, 0 0 0 50px #20251f07;
+      content: "";
+      pointer-events: none;
+    }
+    .contact h2 { max-width: 650px; margin: 12px 0 15px; font-family: var(--serif); font-size: clamp(50px, 8vw, 88px); font-weight: 400; line-height: .95; }
+    .contact p:not(.eyebrow) { max-width: 430px; margin: 0; color: #35422a; font-size: 13px; }
+    .contact .button-link { position: relative; z-index: 1; margin-top: 27px; background: var(--ink); }
+    .footer { display: flex; min-height: 82px; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+    .footer p { margin: 0; }
+    .footer a { color: var(--ink); text-decoration: none; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 650ms ease, transform 650ms cubic-bezier(.2,.7,.2,1); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .hero-copy .eyebrow, .hero-copy h1, .hero-copy .hero-role, .hero-copy .hero-text, .hero-copy .hero-actions {
+      animation: arrive 650ms both cubic-bezier(.2,.7,.2,1);
+    }
+    .hero-copy h1 { animation-delay: 70ms; }
+    .hero-copy .hero-role { animation-delay: 140ms; }
+    .hero-copy .hero-text { animation-delay: 210ms; }
+    .hero-copy .hero-actions { animation-delay: 280ms; }
+    .hero-visual { animation: arrive 800ms 120ms both cubic-bezier(.2,.7,.2,1); }
+    @keyframes arrive { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (min-width: 1400px) { h1 { font-size: 144px; } }
+    @media (max-width: 760px) {
+      html { scroll-padding-top: 72px; }
+      .wrap { width: min(var(--page-width), calc(100% - 40px)); }
+      .topbar { min-height: 70px; }
+      .menu-toggle {
+        display: inline-grid;
+        width: 42px;
+        aspect-ratio: 1;
+        align-content: center;
+        justify-items: center;
+        gap: 5px;
+        padding: 0;
+        border: 1px solid var(--line);
+        border-radius: 2px;
+        background: transparent;
+        cursor: pointer;
+      }
+      .menu-toggle span { display: block; width: 16px; height: 1px; background: var(--ink); transition: transform 160ms ease; }
+      .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3px) rotate(45deg); }
+      .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3px) rotate(-45deg); }
+      .nav {
+        position: absolute;
+        top: calc(100% - 1px);
+        right: 0;
+        left: 0;
+        display: none;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 20px 16px;
+        border: 1px solid var(--line);
+        border-top: 0;
+        background: var(--paper);
+      }
+      .nav.is-open { display: flex; flex-direction: column; }
+      .nav a { padding: 12px 0; }
+      .nav .nav-contact { align-self: flex-start; margin-top: 6px; padding: 9px 13px; }
+      .hero { min-height: auto; grid-template-columns: 1fr; gap: 37px; padding-block: 67px 70px; }
+      h1 { margin-top: 19px; font-size: clamp(86px, 19vw, 130px); }
+      .hero-visual { min-height: 330px; height: 80vw; max-height: 470px; margin-right: 13px; }
+      .photo-label { right: -13px; bottom: 17px; width: 112px; font-size: 19px; }
+      .section { padding-block: 86px; }
+      .section-head { align-items: flex-start; flex-direction: column; margin-bottom: 32px; }
+      .section-intro { max-width: 360px; }
+      .project-grid { grid-template-columns: 1fr; row-gap: 37px; }
+      .project:nth-child(2), .project:nth-child(3) { grid-column: auto; margin-top: 0; }
+      .project-art { min-height: 270px; }
+      .mini-title { font-size: clamp(27px, 8vw, 38px); }
+      .about { grid-template-columns: 1fr; gap: 26px; padding-block: 87px; }
+      .about-copy h2 { font-size: clamp(48px, 10vw, 66px); }
+      .values { gap: 12px; }
+      .contact { margin-block: 55px; }
+      .contact::after { right: -165px; }
+    }
+    @media (max-width: 420px) {
+      .wrap { width: calc(100% - 32px); }
+      .hero { padding-top: 52px; }
+      .hero-actions { gap: 17px; }
+      .project-art { min-height: 235px; }
+      .values { grid-template-columns: 1fr; gap: 15px; }
+      .value { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+      .value span { margin: 0; text-align: right; }
+      .footer { align-items: flex-start; flex-direction: column; justify-content: center; gap: 7px; padding-block: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar wrap">
+    <a class="wordmark" href="#home" aria-label="Valentino, home"><span class="mark" aria-hidden="true">V.</span><span>Valentino Ndalila</span></a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>
+    <nav class="nav" id="site-nav" aria-label="Main navigation">
+      <a href="#work">A few ideas</a>
+      <a href="#about">A little about me</a>
+      <a class="nav-contact" href="#contact">Say hello <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap" id="home" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Software engineer · people first</p>
+        <h1 id="hero-title">Valentino<span aria-hidden="true">.</span></h1>
+        <p class="hero-role">I build software for people, with <em>a little extra care.</em></p>
+        <p class="hero-text">I’m a software engineer who cares about the small things: a clear next step, a page that feels easy, and the moment something just makes sense.</p>
+        <div class="hero-actions">
+          <a class="button-link" href="#work">Take a look around <span aria-hidden="true">↓</span></a>
+          <a class="text-link" href="mailto:ndalilavavalentino@gmail.com">Write me a note</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img class="hero-photo" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85" alt="A light-filled creative workspace with a long table and leafy plants" fetchpriority="high">
+        <div class="photo-label" aria-hidden="true">Curious<br>by nature.</div>
+        <span class="photo-note">A good place to start.</span>
+      </div>
+    </section>
+
+    <div class="ticker" aria-label="Thoughtful software, useful details, and room to explore">
+      <div class="ticker-inner" aria-hidden="true">
+        <span>Thoughtful software</span><span class="ticker-star">✳</span><span>Useful details</span><span class="ticker-star">✳</span><span>Room to explore</span><span class="ticker-star">✳</span><span>Built for real people</span><span class="ticker-star">✳</span>
+        <span>Thoughtful software</span><span class="ticker-star">✳</span><span>Useful details</span><span class="ticker-star">✳</span><span>Room to explore</span><span class="ticker-star">✳</span><span>Built for real people</span><span class="ticker-star">✳</span>
+      </div>
+    </div>
+
+    <section class="section wrap" id="work" aria-labelledby="work-title">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">A small creative playground</p>
+          <h2 class="section-title" id="work-title">Ideas I’d love<br>to bring to life.</h2>
+        </div>
+        <p class="section-intro">A few self-initiated concepts, made for the fun of asking “what if?” These are starting points, not client projects.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project reveal">
+          <div class="project-art art-table" role="img" aria-label="Dinner-table photo behind a concept interface for a shared meal planner">
+            <div class="mini-window" aria-hidden="true"><div class="window-top"><i></i><i></i><i></i></div><div class="mini-content"><span class="mini-kicker">A little get-together</span><span class="mini-title">Around the table</span><span class="mini-line"></span><span class="mini-line short"></span><span class="mini-action">You’re on the list</span></div></div>
+          </div>
+          <div class="project-info"><div><h3 class="project-name">The Open Table</h3><p class="project-desc">A low-pressure way to get friends around the same table.</p></div><span class="project-number">01</span></div>
+        </article>
+        <article class="project reveal">
+          <div class="project-art art-soil" role="img" aria-label="Leafy plants behind a concept interface for a gentle plant-care reminder">
+            <div class="mini-window" aria-hidden="true"><div class="window-top"><i></i><i></i><i></i></div><div class="mini-content"><span class="mini-kicker">Your little windowsill</span><span class="mini-title">Growing, slowly.</span><span class="mini-line"></span><span class="mini-line short"></span><span class="mini-action">Water me when you can</span></div></div>
+          </div>
+          <div class="project-info"><div><h3 class="project-name">Good Soil</h3><p class="project-desc">Plant care without the guilt trip. Everyone forgets sometimes.</p></div><span class="project-number">02</span></div>
+        </article>
+        <article class="project reveal">
+          <div class="project-art art-radio" role="img" aria-label="A live music scene behind a concept interface for a listener-supported radio station">
+            <div class="mini-window" aria-hidden="true"><div class="window-top"><i></i><i></i><i></i></div><div class="mini-content"><span class="mini-kicker">On air, somewhere</span><span class="mini-title">Sunday FM</span><span class="mini-line"></span><span class="mini-line short"></span><span class="mini-action">Listen for a while&nbsp; ▶</span></div></div>
+          </div>
+          <div class="project-info"><div><h3 class="project-name">Sunday FM</h3><p class="project-desc">A small, independent radio idea for finding your next favorite song.</p></div><span class="project-number">03</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="about wrap" id="about" aria-labelledby="about-title">
+      <div class="about-label reveal"><p class="eyebrow">A little about me</p></div>
+      <div class="about-copy reveal">
+        <h2 id="about-title">I think good technology should feel <em>thoughtful,</em> not complicated.</h2>
+        <p>I’m Valentino, a software engineer who enjoys turning a jumble of ideas into something clear and useful. I like the puzzle of making things work; I like it even more when the result feels natural to the person using it.</p>
+        <p>That means sweating the small stuff, staying curious, and remembering there’s always a human on the other side of the screen. Still learning, still building, and always happy to talk through a good idea.</p>
+        <div class="values" aria-label="Things I care about">
+          <div class="value"><strong>Make it clear</strong><span>Less friction, more flow.</span></div>
+          <div class="value"><strong>Mind the details</strong><span>Little things add up.</span></div>
+          <div class="value"><strong>Keep learning</strong><span>Stay curious, stay open.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact wrap" id="contact" aria-labelledby="contact-title">
+      <p class="eyebrow">Have something in mind?</p>
+      <h2 id="contact-title">Let’s make<br>something useful.</h2>
+      <p>Have a project, a question, or just want to say hello? My inbox is open. A short note is a lovely place to start.</p>
+      <a class="button-link" href="mailto:ndalilavavalentino@gmail.com">ndalilavavalentino@gmail.com <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <p>Made with care by Valentino Ndalila.</p>
+    <a href="#home">Back to the top ↑</a>
+    <p>© <span id="year">2026</span></p>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const navigation = document.querySelector('.nav');
+
+    menuButton.addEventListener('click', () => {
+      const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!isExpanded));
+      menuButton.setAttribute('aria-label', isExpanded ? 'Open navigation' : 'Close navigation');
+      navigation.classList.toggle('is-open', !isExpanded);
+    });
+
+    navigation.addEventListener('click', (event) => {
+      if (event.target.closest('a')) {
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open navigation');
+        navigation.classList.remove('is-open');
+      }
+    });
+
+    document.querySelector('#year').textContent = new Date().getFullYear();
+
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.reveal').forEach((element) => revealObserver.observe(element));
+    } else {
+      document.querySelectorAll('.reveal').forEach((element) => element.classList.add('is-visible'));
+    }
+  </script>
+</body>
+</html>
